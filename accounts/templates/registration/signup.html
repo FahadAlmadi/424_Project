@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ar" >
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300&display=swap" rel="stylesheet">
+    <title>Coursat </title>
+    <style>
+        body::before{
+            content: '';
+            display: block;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+<section class="loginPage py-5">
+    <div class="container">
+      <div class="row login_box shadow-lg">
+        <div class="col-12 px-0">
+          <form class="login-form" action="{% url 'accounts:signup' %}" method="POST">
+            {% csrf_token %}
+            <div class="login_content">
+              <div
+              class="login_footer d-flex align-items-center justify-content-center"
+            >
+                  <h6 class="text-white">سوق-تجد فيه ما ترغب</h6>
+                <img
+                  src="{% static 'img/logo.png' %}"
+                  width="90"
+                  alt="logo_login"
+                />
+            </div>
+              <hr class="my-4" />
+              <h6 class="title text-white">تسجيل الدخول</h6>
+              <div class="inp_holder">
+               
+                <label for="form.username" class="login-label">اسم المستخدم</label>
+                <input
+                type="username"
+                class="login-inp form-control"
+                name="username"
+                />
+                
+                <div class="inp_holder">
+                  <label for="form.email" class="login-label">البريد الإلكتروني</label>
+                  <input
+                    type="email"
+                    class="login-inp form-control"
+                    name="email"
+                  />
+                </div>
+              <div class="inp_holder">
+                <label for="form.password1" class="login-label">كلمة السر</label>
+                <input
+                  type="password"
+                  class="login-inp form-control"
+                  name="password1"
+                />
+              </div>
+              <div class="inp_holder">
+                <label for="form.password2" class="login-label">تأكيد كلمة السر</label>
+                <input
+                  type="password"
+                  class="login-inp form-control"
+                  name="password2"
+                />
+              </div>
+
+              <div class="btn_holder">
+                <button class="btn login-btn">تسجيل الدخول</button>
+
+              </div>
+              {% if form.errors %}
+              <p>تأكد من ملئ كافة الحقول </p>
+              {% endif %}
+      
+              {% if next %}
+                  {% if user.is_authenticated %}
+                  <p>Your account doesn't have access to this page. To proceed,
+                  please login with an account that has access.</p>
+                  {% else %}
+                  <p>Please login to see this page.</p>
+                  {% endif %}
+              {% endif %}
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

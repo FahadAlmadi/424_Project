@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <!-- Product section -->
+  <section class="py-5">
+    <div class="container px-4 px-lg-5 my-5">
+      <div class="row gx-4 gx-lg-5 align-items-center">
+        <div class="col-md-6 col-lg-6">
+          <img class="img-fulid  card-img-top mb-5 mb-md-0 detail-img" src="{{ item.image.url }}" alt="..." />
+        </div>
+        <div class="col-md-6">
+          <div class="product-details text-center">
+          <h1 class="display-5 fw-bolder">{{ item.name }}</h1>
+          <div class="fs-5 mb-5">
+            <span>السعر: ${{ item.price }}</span>
+            <p >{{ item.description }}</p>
+          </div>
+
+          <ul class="product-links">
+            <li><a class="btn btn-success" href="{% url 'shop:add_item_to_purchased' item.id%}"><i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i>اضف للسلة</a></li>
+            <li><a class="btn btn-info" href="{% url 'shop:item_edit' item.pk %}">تعديل</a></li>
+            <li><a class="btn btn-danger" href="{% url 'shop:item_delete' item.pk %}">حذف</a></li>
+          </ul>
+        </div>
+          </div>
+          </div>
+    </div>
+  </section>
+{% endblock %}

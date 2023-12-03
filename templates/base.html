@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ar" >
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}" />
+    <!-- Main Faile Css  -->
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300&display=swap" rel="stylesheet">
+    <title>Mobile Shop </title>
+    <style>
+        body::before{
+            content: '';
+            display: block;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- .navbar.navbar-expand.bg-dark.navbar-dark -->
+    
+    <div class="navbar navbar-expand-md bg-dark navbar-dark text-white fixed-top">
+        <div class="container">
+            <!-- a.navbar-brand -->
+            <a href="{% url 'shop:item_list' %}" class="navbar-brand">سوق</a>
+
+        <button 
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse" 
+            data-bs-target="#mainmenu"> 
+            <div class="span navbar-toggler-icon"></div>
+        </button>
+            <div class="collapse navbar-collapse" id="mainmenu">
+                <!-- ul.navbar-nav.ms-auto>li.nav-item*3>a.nav-link -->
+                <ul class="navbar-nav ms-auto">
+                    <li class="btn btn-success btn-nav"><a href="{% url 'shop:item_create' %}" class="nav-link">اضف منتج</a></li>
+                    <li class="nav-item"><a href="{% url 'shop:purchased_items'%}" class="nav-link"><i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i> السلة</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">تسجيل الخروج</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+{% block content %}
+    
+{% endblock content %}
+    
+
+ <!-- Footer -->
+
+ <footer class="py-4 bg-dark text-white text-center position-relative">
+    <div class="container">
+        <p class="lead">
+            Copyright &copy;2023 Mobile Shop
+        </p>
+        <a href="#" class="position-absolute bottom-0 end-0 p-3">
+            <i class="bi bi-arrow-up-circle h2"></i>
+        </a>
+    </div>
+</footer>
+
+
+
+
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+<script src="https://kit.fontawesome.com/ca3760a2b9.js" crossorigin="anonymous"></script>
+</body>
+</html>

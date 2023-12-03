@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+  <p>هل أنت متأكد من حذف "{{ item.name }}"?</p>
+  <form method="post">
+    <ul class=" product-links-form text-center">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger">حذف</button>
+      <li><a class="btn btn-success" href="{% url 'shop:item_detail' item.pk %}">إلغاء</a></li>
+    </ul>
+  </form>
+  </div>
+{% endblock %}

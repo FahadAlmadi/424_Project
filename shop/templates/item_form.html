@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<style>
+  .white-text  {
+      color: white;  /* Set the color to white */
+  }
+</style>
+<div class="container">
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+    <div class="form-container">
+      {{ form|crispy }}
+    </div>
+    
+    <button type="submit" class="btn btn-primary">حفظ</button>
+  </form>
+</div>
+{% endblock %}
